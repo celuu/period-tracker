@@ -1,28 +1,27 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const periodSchema = Schema(
+const eventSchema = Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    startDate: [{
+    date: {
       type: String,
       required: true,
-    }],
-    cycleLength: {
-      type: Number,
+    },
+    typeOfEvent: {
+      type: String,
       required: true,
     },
-    periodLength: {
-      type: Number, 
-      required: true
-    }
+    notes: {
+      type: String,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("PeriodDate", periodSchema);
+module.exports = mongoose.model("Event", eventSchema);

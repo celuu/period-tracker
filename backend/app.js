@@ -4,6 +4,8 @@ const logger = require("morgan");
 const passport = require("passport");
 const app = express();
 app.use(passport.initialize());
+const debug = require("debug");
+const serverErrorLogger = debug("backend:error");
 
 
 const cors = require("cors");
@@ -12,11 +14,11 @@ const csurf = require("csurf");
 
 require("./models/User");
 require("./config/passport");
-require("./models/Period");
+require("./models/Event");
 
 
 const usersRouter = require("./routes/api/users"); 
-const periodRouter = require("./routes/api/periods");
+const eventRouter = require("./routes/api/events");
 const csrfRouter = require("./routes/api/csrf");
 
 
@@ -25,13 +27,6 @@ app.use(logger("dev")); // log request components (URL/method) to terminal
 app.use(express.json()); // parse JSON request body
 app.use(express.urlencoded({ extended: false })); // parse urlencoded request body
 app.use(cookieParser()); // parse cookies as an object on req.cookies
-
-app.use((req, res, next) => {
-  const err = new Error("Not Found");
-  err.statusCode = 404;
-  next(err);
-});
-
 
 
 app.use((err, req, res, next) => {
@@ -67,7 +62,13 @@ app.use(
 
 // Attach Express routers
 app.use("/api/users", usersRouter); 
-app.use("/api/periods", periodRouter);
+app.use("/api/events", eventRouter);
 app.use("/api/csrf", csrfRouter);
+
+app.use((req, res, next) => {
+  const err = new Error("Not Found");
+  err.statusCode = 404;
+  next(err);
+});
 
 module.exports = app;
