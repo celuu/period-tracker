@@ -12,7 +12,7 @@ const csurf = require("csurf");
 
 require("./models/User");
 require("./config/passport");
-require("./models/Tweet");
+require("./models/Period");
 
 
 const usersRouter = require("./routes/api/users"); 

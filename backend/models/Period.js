@@ -1,20 +1,24 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const tweetSchema = Schema(
+const periodSchema = Schema(
   {
-    author: {
+    userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    text: {
+    startDate: [{
       type: String,
       required: true,
-    },
+    }],
+    cycleLength: {
+      type: Number,
+      required: true,
+    }
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("Tweet", tweetSchema);
+module.exports = mongoose.model("PeriodDate", periodSchema);

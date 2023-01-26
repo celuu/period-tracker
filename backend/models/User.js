@@ -16,6 +16,10 @@ const userSchema = Schema(
       type: String,
       required: true,
     },
+    periodId: {
+      type: Schema.Types.ObjectId,
+      ref: "Period"
+    }
   },
   {
     timestamps: true,
