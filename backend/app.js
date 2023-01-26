@@ -16,7 +16,7 @@ require("./models/Period");
 
 
 const usersRouter = require("./routes/api/users"); 
-const tweetsRouter = require("./routes/api/tweets");
+const periodRouter = require("./routes/api/periods");
 const csrfRouter = require("./routes/api/csrf");
 
 
@@ -67,7 +67,7 @@ app.use(
 
 // Attach Express routers
 app.use("/api/users", usersRouter); 
-app.use("/api/tweets", tweetsRouter);
+app.use("/api/periods", periodRouter);
 app.use("/api/csrf", csrfRouter);
 
 module.exports = app;

@@ -14,6 +14,10 @@ const periodSchema = Schema(
     cycleLength: {
       type: Number,
       required: true,
+    },
+    periodLength: {
+      type: Number, 
+      required: true
     }
   },
   {

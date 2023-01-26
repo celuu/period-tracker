@@ -10,12 +10,14 @@ const NUM_SEED_USERS = 10;
 
 // Create users
 const users = [];
+const periods = [];
 
 users.push(
   new User({
     username: "demo-user",
     email: "demo-user@appacademy.io",
     hashedPassword: bcrypt.hashSync("starwars", 10),
+    periodId: periods[0],
   })
 );
 
@@ -31,6 +33,18 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
   );
 }
 
+
+
+periods.push(
+  new Period({
+    userId: users[0],
+    startDate: "2023-01-23",
+    cycleLength: 28,
+    periodLength: 5,
+  })
+)
+
+
 // Create tweets
 // const tweets = [];
 
@@ -42,3 +56,31 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
 //     })
 //   );
 // }
+
+mongoose
+  .connect(db, { useNewUrlParser: true })
+  .then(() => {
+    console.log("Connected to MongoDB successfully");
+    insertSeeds();
+  })
+  .catch((err) => {
+    console.error(err.stack);
+    process.exit(1);
+  });
+
+const insertSeeds = () => {
+  console.log("Resetting db and seeding users and spots...");
+  User.collection
+    .drop()
+    .then(() => Period.collection?.drop())
+    .then(() => User.insertMany(users))
+    .then(() => Period.insertMany(periods))
+    .then(() => {
+      console.log("done!");
+      mongoose.disconnect();
+    })
+    .catch((err) => {
+      console.error(err.stack);
+      process.exit(1);
+    });
+};
