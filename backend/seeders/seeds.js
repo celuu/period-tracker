@@ -20,6 +20,16 @@ users.push(
     periodLength: 5,
   })
 );
+users.push(
+  new User({
+    username: "demo",
+    email: "demo-user@gmail.com@gmail.com",
+    hashedPassword: bcrypt.hashSync("starwars", 10),
+    cycleLength: 35,
+    periodLength: 5,
+  })
+);
+
 
 
 

@@ -5,17 +5,12 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const jwt = require("jsonwebtoken");
 const { secretOrKey } = require("./keys");
+const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
 
 
 const options = {};
-
-options.secretOrKey = secretOrKey;
-
-const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-
-exports.requireUser = passport.authenticate("jwt", { session: false });
-
+options.secretOrKey = secretOrKey;
 
 passport.use(
   new LocalStrategy(
@@ -52,6 +47,7 @@ passport.use(
   })
 );
 
+exports.requireUser = passport.authenticate("jwt", { session: false });
 
 exports.restoreUser = (req, res, next) => {
   return passport.authenticate("jwt", { session: false }, function (err, user) {
@@ -60,6 +56,8 @@ exports.restoreUser = (req, res, next) => {
     next();
   })(req, res, next);
 };
+
+
 
 exports.loginUser = async function (user) {
   const userInfo = {
@@ -77,4 +75,3 @@ exports.loginUser = async function (user) {
     token,
   };
 };
-

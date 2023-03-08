@@ -1,0 +1,48 @@
+.not-logged-in-div {
+    display: flex;
+    align-items: flex-end;
+
+}
+
+.nav-button{
+    outline: 5px;
+    border-color: black;
+    border-radius: 2px;
+    display: flex;
+    align-content: space-between;
+    cursor: pointer;
+}
+
+.nav-bar{
+    background-color: #D4CDE9;
+    height: 50px;
+}
+
+.button-container-nav {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    width: 270px;
+}
+
+.button-container-nav>button{
+    border: none;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    padding: 5px;
+    font-family: "Manrope", sans-serif, var(--font-apple-system);
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid;
+    margin-left: 10px;
+    transition: all 0.4s;
+}
+
+.button-container-nav>button:hover {
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    transition: all 0.4s;
+}
