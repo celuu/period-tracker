@@ -62,14 +62,21 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
 });
 
 router.post("/login", validateLoginInput, async (req, res, next) => {
+  console.log("aaa")
   passport.authenticate("local", async function (err, user) {
-    if (err) return next(err);
+    if (err) {
+      console.log("a")
+      console.error(err);
+      return next(err)
+    };
+    console.log(user);
     if (!user) {
       const err = new Error("Invalid credentials");
       err.statusCode = 400;
       err.errors = { email: "Invalid credentials" };
       return next(err);
     }
+    console.log("b");
     return res.json(await loginUser(user));
   })(req, res, next);
 });
@@ -88,6 +95,8 @@ router.get("/current", restoreUser, (req, res) => {
     _id: req.user._id,
     username: req.user.username,
     email: req.user.email,
+    cycleLength: req.user.cycleLength,
+    periodLength: req.user.periodLength
   });
 });
 

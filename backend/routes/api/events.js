@@ -6,14 +6,6 @@ const Event = mongoose.model("Event");
 const { requireUser } = require("../../config/passport");
 const validateEvent = require("../../validations/event");
 
-// router.get("/", async (req, res) => {
-//   try {
-//     const periods = await Period.find()
-//     return res.json(periods);
-//   } catch (err) {
-//     return res.json([]);
-//   }
-// });
 
 router.get("/", requireUser, async (req, res, next) => {
   try {

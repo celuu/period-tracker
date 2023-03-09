@@ -9,7 +9,7 @@ form .errors {
 
 .inputs-container input {
   background-color: transparent;
-  color: white;
+  color: #301934;
 }
 
 /* containers for both modals */
@@ -34,7 +34,7 @@ form .errors {
 .session-form input {
   width: 250px;
   border: none;
-  border-bottom: 3px solid grey;
+  border-bottom: 3px solid #301934;
   padding: 10px 0;
   transition: border-bottom 0.2s;
   font-family: var(--font-apple-system);
@@ -54,7 +54,7 @@ form .errors {
   margin-top: 5px;
   margin-bottom: 10px;
   line-height: 40px;
-  color: white;
+  color: #301934;
   outline-color: black;
   
 }
@@ -69,7 +69,7 @@ form .errors {
 
 .button-container>button, .demo-button-container>button {
   border: none;
-  color: black;
+  color: #301934;
   background-color: white;
   cursor: pointer;
   padding: 10px;
@@ -91,7 +91,7 @@ form .errors {
 .button-container>button:hover, .demo-button-container>button:hover {
   border: 1px solid black;
   color: white;
-  background-color: black;
+  background-color: #301934;
   transition: all 0.4s;
 }
 

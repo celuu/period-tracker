@@ -28,7 +28,6 @@ app.use(express.json()); // parse JSON request body
 app.use(express.urlencoded({ extended: false })); // parse urlencoded request body
 app.use(cookieParser()); // parse cookies as an object on req.cookies
 
-
 app.use((err, req, res, next) => {
   serverErrorLogger(err);
   const statusCode = err.statusCode || 500;
@@ -40,7 +39,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-
 // Security Middleware
 if (!isProduction) {
   // Enable CORS only in development because React will be on the React
@@ -49,16 +47,15 @@ if (!isProduction) {
   app.use(cors());
 }
 
-app.use(
-  csurf({
-    cookie: {
-      secure: isProduction,
-      sameSite: isProduction && "Lax",
-      httpOnly: true,
-    },
-  })
-);
-
+// app.use(
+//   csurf({
+//     cookie: {
+//       secure: isProduction,
+//       sameSite: isProduction && "Lax",
+//       httpOnly: true,
+//     },
+//   })
+// );
 
 // Attach Express routers
 app.use("/api/users", usersRouter); 

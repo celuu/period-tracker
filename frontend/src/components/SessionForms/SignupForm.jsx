@@ -42,6 +42,7 @@ function SignupForm() {
       case "bio":
         setState = setPeriodLength;
 
+
     }
 
     return (e) => setState(e.currentTarget.value);
@@ -66,71 +67,73 @@ function SignupForm() {
   return (
     <div className="sign-up-container">
       <form className="session-form" onSubmit={handleSubmit}>
-        <h1 className="form-header">Sign Up</h1>
-        <label>
-          <input
-            type="text"
-            autoFocus
-            autoComplete="off"
-            value={email}
-            onChange={update("email")}
-            placeholder="Email"
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            autoFocus
-            autoComplete="off"
-            value={email}
-            onChange={update("username")}
-            placeholder="Username"
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            autoFocus
-            autoComplete="off"
-            value={email}
-            onChange={update("password")}
-            placeholder="Password"
-          />
-        </label>
-        <label className="confirm">
-          <input
-            type="password"
-            autoComplete="off"
-            value={password2}
-            onChange={update("password2")}
-            placeholder="Confirm Password"
-          />
-        </label>
-        <div className="errors">
-          {password !== password2 && "Confirm Password field must match"}
-        </div>
-        <label>
-          <input
-            type="text"
-            autoFocus
-            autoComplete="off"
-            value={email}
-            onChange={update("cycleLength")}
-            placeholder="Cycle Length"
-          />
-        </label>
-        <label>
-          <input
-            type="text"
-            autoFocus
-            autoComplete="off"
-            value={email}
-            onChange={update("periodLength")}
-            placeholder="Period Length"
-          />
-        </label>
-        <div className="button-container">
-          <button>Submit</button>
+        <div className="inputs-container">
+          <h1 className="form-header">Sign Up</h1>
+          <label>
+            <input
+              type="text"
+              autoFocus
+              autoComplete="off"
+              value={email}
+              onChange={update("email")}
+              placeholder="Email"
+            />
+          </label>
+          <label>
+            <input
+              type="text"
+              autoFocus
+              autoComplete="off"
+              value={username}
+              onChange={update("username")}
+              placeholder="Username"
+            />
+          </label>
+          <label>
+            <input
+              type="text"
+              autoFocus
+              autoComplete="off"
+              value={password}
+              onChange={update("password")}
+              placeholder="Password"
+            />
+          </label>
+          <label className="confirm">
+            <input
+              type="password"
+              autoComplete="off"
+              value={password2}
+              onChange={update("password2")}
+              placeholder="Confirm Password"
+            />
+          </label>
+          <div className="errors">
+            {password !== password2 && "Confirm Password field must match"}
+          </div>
+          <label>
+            <input
+              type="text"
+              autoFocus
+              autoComplete="off"
+              value={cycleLength}
+              onChange={update("cycleLength")}
+              placeholder="Cycle Length"
+            />
+          </label>
+          <label>
+            <input
+              type="text"
+              autoFocus
+              autoComplete="off"
+              value={periodLength}
+              onChange={update("periodLength")}
+              placeholder="Period Length"
+            />
+          </label>
+          <div className="button-container">
+            <button>Submit</button>
+          </div>
         </div>
       </form>
     </div>

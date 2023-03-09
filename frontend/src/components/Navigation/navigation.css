@@ -6,7 +6,7 @@
 
 .nav-button{
     outline: 5px;
-    border-color: black;
+    border-color: #301934;
     border-radius: 2px;
     display: flex;
     align-content: space-between;
@@ -27,7 +27,7 @@
 
 .button-container-nav>button{
     border: none;
-    color: black;
+    color: #301934;
     background-color: white;
     cursor: pointer;
     padding: 5px;
@@ -41,8 +41,8 @@
 }
 
 .button-container-nav>button:hover {
-    border: 1px solid black;
+    border: 1px solid #301934;
     color: white;
-    background-color: black;
+    background-color: #301934;
     transition: all 0.4s;
 }

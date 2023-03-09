@@ -6,19 +6,21 @@ import {
   openUploadModal,
 } from "../../store/ui";
 import { useDispatch, useSelector } from 'react-redux';
+import {logout} from "../../store/session"
 
 
 const Navigation = () => {
-    const sessionUser = useSelector(state => state.session.user)
+    const loggedIn = useSelector(state => !!state.session.user)
+
  
     
     const dispatch = useDispatch();
     const getLinks = () => {
-        // if (loggedIn){
-        //     return(
-        //         <h1>Sign Out</h1>
-        //     )
-        // } else {
+        if (loggedIn){
+            return(
+                <button onClick={() => dispatch(logout())}>Sign Out</button>
+            )
+        } else {
             return (
               <div className="nav-bar">
                 <div className='button-container-nav'>
@@ -36,6 +38,7 @@ const Navigation = () => {
     }
 
     return <>{getLinks()}</>;
+  }
 }
 
 export default Navigation;
