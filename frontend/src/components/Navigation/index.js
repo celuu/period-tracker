@@ -11,15 +11,20 @@ import {logout} from "../../store/session"
 
 const Navigation = () => {
     const loggedIn = useSelector(state => !!state.session.user)
-
- 
+    
     
     const dispatch = useDispatch();
     const getLinks = () => {
         if (loggedIn){
-            return(
-                <button onClick={() => dispatch(logout())}>Sign Out</button>
-            )
+            return (
+              <div className="nav-bar">
+                <div className="button-container-nav">
+                  <button onClick={() => dispatch(logout())}>
+                    Log out
+                  </button>
+                </div>
+              </div>
+            );
         } else {
             return (
               <div className="nav-bar">
@@ -33,12 +38,11 @@ const Navigation = () => {
                 </div>
               </div>
             );
-        // }
+        }
 
     }
 
     return <>{getLinks()}</>;
-  }
 }
 
 export default Navigation;

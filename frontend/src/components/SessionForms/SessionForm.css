@@ -59,7 +59,6 @@ form .errors {
   
 }
 
-
 .button-container {
   display: flex;
   align-items: center;
@@ -99,27 +98,12 @@ form .errors {
 .signin-button-wrapper {
   display: flex;
   justify-content: center;
+  margin-left: 20px
 }
 
 .sign-in-button{
   width: 250px;
   background-color: white;
-}
-.next-page-button-container {
-  display: flex;
-  align-items: right;
-  justify-content: space-between;
-  width: 250px;
-  margin-top: 15px;
-}
-
-
-
-.next-page-button:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid white;
-  transition: background-color 0.3s;
 }
 
 
@@ -128,13 +112,17 @@ form .errors {
   padding-top: 20px;
 }
 
-input[type="file"] {
-  border: none;
+input[type="number"] {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: column;
 }
 
 
 .confirm{
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 .upload{

@@ -9,8 +9,9 @@ function SignupForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const [cycleLength, setCycleLength] = useState();
-  const [periodLength, setPeriodLength] = useState();
+  const [cycleLength, setCycleLength] = useState("28");
+  const [periodLength, setPeriodLength] = useState("5");
+
 
   
   const dispatch = useDispatch();
@@ -39,10 +40,10 @@ function SignupForm() {
         break;
       case "cycleLength":
         setState = setCycleLength;
-      case "bio":
+        break;
+      case "periodLength":
         setState = setPeriodLength;
-
-
+ 
     }
 
     return (e) => setState(e.currentTarget.value);
@@ -59,10 +60,7 @@ function SignupForm() {
     dispatch(signup(formData));
   };
 
-  const handleSubmitDemo = (e) => {
-    e.preventDefault();
-    dispatch(login({email: "demo-user@gmail.com", password: "starwars"}))
-  }
+
 
   return (
     <div className="sign-up-container">
@@ -91,7 +89,7 @@ function SignupForm() {
           </label>
           <label>
             <input
-              type="text"
+              type="password"
               autoFocus
               autoComplete="off"
               value={password}
@@ -112,8 +110,9 @@ function SignupForm() {
             {password !== password2 && "Confirm Password field must match"}
           </div>
           <label>
+            Cycle Length
             <input
-              type="text"
+              type="number"
               autoFocus
               autoComplete="off"
               value={cycleLength}
@@ -121,9 +120,11 @@ function SignupForm() {
               placeholder="Cycle Length"
             />
           </label>
+
           <label>
+            Period Length
             <input
-              type="text"
+              type="number"
               autoFocus
               autoComplete="off"
               value={periodLength}
@@ -131,9 +132,9 @@ function SignupForm() {
               placeholder="Period Length"
             />
           </label>
-          <div className="button-container">
-            <button>Submit</button>
-          </div>
+        </div>
+        <div className="signin-button-wrapper button-container">
+          <button className="signup-submit">Submit</button>
         </div>
       </form>
     </div>
