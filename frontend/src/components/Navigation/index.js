@@ -1,16 +1,17 @@
 import './navigation.css'
 import {
   openSigninModal,
-  openSignupModal,
-  openUserModal,
-  openUploadModal,
+  openSignupModal
 } from "../../store/ui";
 import { useDispatch, useSelector } from 'react-redux';
 import {logout} from "../../store/session"
+import { useHistory } from "react-router-dom"
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 
 const Navigation = () => {
     const loggedIn = useSelector(state => !!state.session.user)
+    const history = useHistory();
     
     
     const dispatch = useDispatch();
@@ -18,17 +19,22 @@ const Navigation = () => {
         if (loggedIn){
             return (
               <div className="nav-bar">
+                <h1 onClick={() => history.push("/")} className="title">
+                  MyMonthly
+                </h1>
                 <div className="button-container-nav">
-                  <button onClick={() => dispatch(logout())}>
-                    Log out
-                  </button>
+                  <AccountCircleIcon sx={{ color: "#301934" }} />
+                  <button onClick={() => dispatch(logout())}>Log out</button>
                 </div>
               </div>
             );
         } else {
             return (
               <div className="nav-bar">
-                <div className='button-container-nav'>
+                <h1 onClick={() => history.push("/")} className="title">
+                  MyMonthly
+                </h1>
+                <div className="button-container-nav">
                   <button onClick={() => dispatch(openSignupModal())}>
                     Sign up
                   </button>

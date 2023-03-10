@@ -1,0 +1,32 @@
+.log-period {
+    border: none;
+    color: #301934;
+    background-color: white;
+    cursor: pointer;
+    padding: 10px;
+    font-family: "Manrope", sans-serif, var(--font-apple-system);
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 50px;
+    border: 1px solid;
+    transition: all 0.4s;
+    
+}
+
+.log-period-container {
+    align-content: center;
+
+}
+
+.main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.username-main{
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

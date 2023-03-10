@@ -28,6 +28,8 @@ export const signup = (user) => startSession(user, "/api/users/register");
 export const login = (user) => startSession(user, "/api/users/login");
 
 const startSession = (userInfo, route) => async (dispatch) => {
+
+
   try {
     let res;
     if (route === "/api/users/register") {

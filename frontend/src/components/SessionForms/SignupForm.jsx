@@ -12,8 +12,6 @@ function SignupForm() {
   const [cycleLength, setCycleLength] = useState("28");
   const [periodLength, setPeriodLength] = useState("5");
 
-
-  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,9 +41,10 @@ function SignupForm() {
         break;
       case "periodLength":
         setState = setPeriodLength;
- 
+        break;
+      default:
+        throw Error("Unknown field in Signup Form");
     }
-
     return (e) => setState(e.currentTarget.value);
   };
 
@@ -59,8 +58,6 @@ function SignupForm() {
     formData.append("periodLength", periodLength);
     dispatch(signup(formData));
   };
-
-
 
   return (
     <div className="sign-up-container">

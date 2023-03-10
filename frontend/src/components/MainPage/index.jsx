@@ -1,9 +1,9 @@
 
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUser } from "../../store/session";
 import "./MainPage.css";
+import { openPeriodModal } from "../../store/ui";
 
 
 const MainPage = () => {
@@ -43,17 +43,30 @@ const MainPage = () => {
     dispatch(getCurrentUser())
   }, [dispatch])
 
+
   const getLinks = () => {
       if(loggedIn){
         return (
-          <div>
-            <h1>{`hi ${currentUser.username}`}</h1>
+          <div className="main-info">
+
+              <h1 className="username-main">{`hi ${currentUser.username}`}</h1>
             <h1>{`Today is ${weekdays[weekday]}, ${months[month]} ${day}, ${year} `}</h1>
-            <div className="button-container">
-              <button> Log a Period</button>
+            <div className="button-container log-period-container">
+              <button
+                onClick={() => dispatch(openPeriodModal())}
+                className="log-period"
+              >
+                Log a Period
+              </button>
             </div>
           </div>
         );
+      } else {
+        return(
+          <>
+          <h1>MyMonthly is an application that helps users know how to work with their body </h1>
+          </>
+        )
       }
 
   }

@@ -7,21 +7,33 @@ import SignupModal from "./components/SessionForms/SignupModal";
 import Navigation from "./components/Navigation";
 import MainPage from "./components/MainPage";
 import { getCurrentUser } from "./store/session";
+import CreatePeriodModal from "./components/CreatePeriod/CreatePeriodModal";
 
 
 const App = () => {
-  const currentUser = useSelector((store) => store.session.user);
+    const [loaded, setLoaded] = useState(false);
+    const currentUser = useSelector((store) => store.session.user);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getCurrentUser()).then(() => setLoaded(true));
+    }, [dispatch]);
+
   return (
-    <>
-      <Navigation />
-      <LoginModal />
-      <SignupModal />
-      <Switch>
-        <Route exact path="/">
-          <MainPage />
-        </Route>
-      </Switch>
-    </>
+    loaded && (
+      <>
+        <Navigation />
+        <LoginModal />
+        <CreatePeriodModal />
+        <SignupModal />
+
+        <Switch>
+          <Route exact path="/">
+            <MainPage />
+          </Route>
+        </Switch>
+      </>
+    )
   );
 };
 

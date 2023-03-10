@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const passport = require("passport");
 const validateRegisterInput = require("../../validations/register");
-const validateLoginInput = require("../../validations/login");
+const validateLoginInput = require("../../validations/login")
 
 const { loginUser, restoreUser } = require("../../config/passport");
 const { isProduction } = require("../../config/keys");
@@ -62,21 +62,17 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
 });
 
 router.post("/login", validateLoginInput, async (req, res, next) => {
-  console.log("aaa")
   passport.authenticate("local", async function (err, user) {
     if (err) {
-      console.log("a")
       console.error(err);
       return next(err)
     };
-    console.log(user);
     if (!user) {
       const err = new Error("Invalid credentials");
       err.statusCode = 400;
       err.errors = { email: "Invalid credentials" };
       return next(err);
     }
-    console.log("b");
     return res.json(await loginUser(user));
   })(req, res, next);
 });

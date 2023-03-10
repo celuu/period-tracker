@@ -16,12 +16,15 @@
 .nav-bar{
     background-color: #D4CDE9;
     height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .button-container-nav {
     display: flex;
     align-items: center;
-    margin-top: 20px;
     width: 270px;
 }
 
@@ -38,6 +41,13 @@
     border: 1px solid;
     margin-left: 10px;
     transition: all 0.4s;
+}
+
+.title{
+    font-size: 30px;
+    margin-left: 50px;
+    cursor: pointer;
+    color: #301934
 }
 
 .button-container-nav>button:hover {
